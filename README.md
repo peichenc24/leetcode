@@ -1,2 +1,5 @@
 # leetcode
- algorithm practices 
+Leet Code problem Algorithm practices record...
+
+## Both LeetCode and LeetCode-CN
+
