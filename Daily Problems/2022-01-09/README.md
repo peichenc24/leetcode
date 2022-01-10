@@ -4,7 +4,6 @@ Leet Code problem Algorithm practices record
 1041. Robot Bounded In Circle
 Medium
 
-2376
 On an infinite plane, a robot initially stands at (0, 0) and faces north. The robot can receive one of three instructions:
 
 "G": go straight 1 unit;
