@@ -1,69 +1,77 @@
 # leetcode
 Leet Code problem Algorithm practices record
 
-1345. Jump Game IV
-Hard
+849. Maximize Distance to Closest Person
+You are given an array representing a row of seats where seats[i] = 1 represents a person sitting in the ith seat, and seats[i] = 0 represents that the ith seat is empty (0-indexed).
 
-Given an array of integers arr, you are initially positioned at the first index of the array.
+There is at least one empty seat, and at least one person sitting.
 
-In one step you can jump from index i to index:
+Alex wants to sit in the seat such that the distance between him and the closest person to him is maximized. 
 
-i + 1 where: i + 1 < arr.length.
-i - 1 where: i - 1 >= 0.
-j where: arr[i] == arr[j] and i != j.
-Return the minimum number of steps to reach the last index of the array.
-
-Notice that you can not jump outside of the array at any time.
+Return that maximum distance to the closest person.
 
 Example 1:
 
-Input: arr = [100,-23,-23,404,100,23,23,23,3,404]
-Output: 3
-Explanation: You need three jumps from index 0 --> 4 --> 3 --> 9. Note that index 9 is the last index of the array.
+Input: seats = [1,0,0,0,1,0,1]
+Output: 2
+Explanation: 
+If Alex sits in the second open seat (i.e. seats[2]), then the closest person has distance 2.
+If Alex sits in any other open seat, the closest person has distance 1.
+Thus, the maximum distance to the closest person is 2.
 Example 2:
 
-Input: arr = [7]
-Output: 0
-Explanation: Start index is the last index. You do not need to jump.
+Input: seats = [1,0,0,0]
+Output: 3
+Explanation: 
+If Alex sits in the last seat (i.e. seats[3]), the closest person is 3 seats away.
+This is the maximum distance possible, so the answer is 3.
 Example 3:
 
-Input: arr = [7,6,9,6,9,6,9,7]
+Input: seats = [0,1]
 Output: 1
-Explanation: You can jump directly from index 0 to index 7 which is last index of the array.
  
 
 Constraints:
 
-1 <= arr.length <= 5 * 104
--108 <= arr[i] <= 108
+2 <= seats.length <= 2 * 104
+seats[i] is 0 or 1.
+At least one seat is empty.
+At least one seat is occupied.
 
 # leetcode-CN
 
-1716. 计算力扣银行的钱
-Hercy 想要为购买第一辆车存钱。他 每天 都往力扣银行里存钱。
+382. 链表随机节点
+给你一个单链表，随机选择链表的一个节点，并返回相应的节点值。每个节点 被选中的概率一样 。
 
-最开始，他在周一的时候存入 1 块钱。从周二到周日，他每天都比前一天多存入 1 块钱。在接下来每一个周一，他都会比 前一个周一 多存入 1 块钱。
+实现 Solution 类：
 
-给你 n ，请你返回在第 n 天结束的时候他在力扣银行总共存了多少块钱。
+Solution(ListNode head) 使用整数数组初始化对象。
+int getRandom() 从链表中随机选择一个节点并返回该节点的值。链表中所有节点被选中的概率相等。
 
-示例 1：
+示例：
 
-输入：n = 4
-输出：10
-解释：第 4 天后，总额为 1 + 2 + 3 + 4 = 10 。
-示例 2：
+输入
+["Solution", "getRandom", "getRandom", "getRandom", "getRandom", "getRandom"]
+[[[1, 2, 3]], [], [], [], [], []]
+输出
+[null, 1, 3, 2, 2, 3]
 
-输入：n = 10
-输出：37
-解释：第 10 天后，总额为 (1 + 2 + 3 + 4 + 5 + 6 + 7) + (2 + 3 + 4) = 37 。注意到第二个星期一，Hercy 存入 2 块钱。
-示例 3：
-
-输入：n = 20
-输出：96
-解释：第 20 天后，总额为 (1 + 2 + 3 + 4 + 5 + 6 + 7) + (2 + 3 + 4 + 5 + 6 + 7 + 8) + (3 + 4 + 5 + 6 + 7 + 8) = 96 。
- 
+解释
+Solution solution = new Solution([1, 2, 3]);
+solution.getRandom(); // 返回 1
+solution.getRandom(); // 返回 3
+solution.getRandom(); // 返回 2
+solution.getRandom(); // 返回 2
+solution.getRandom(); // 返回 3
+// getRandom() 方法应随机返回 1、2、3中的一个，每个元素被返回的概率相等。
 
 提示：
 
-1 <= n <= 1000
-通过次数26,240提交次数37,349
+链表中的节点数在范围 [1, 104] 内
+-104 <= Node.val <= 104
+至多调用 getRandom 方法 104 次
+
+进阶：
+
+如果链表非常大且长度未知，该怎么处理？
+你能否在不使用额外空间的情况下解决此问题？
