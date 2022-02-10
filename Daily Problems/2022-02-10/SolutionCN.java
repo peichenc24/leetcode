@@ -1,13 +1,17 @@
-class SolutionCN {
-    public int countKDifference(int[] nums, int k) {
-        int res = 0, n = nums.length;
-        for (int i = 0; i < n; ++i) {
-            for (int j = i + 1; j < n; ++j) {
-                if (Math.abs(nums[i] - nums[j]) == k) {
-                    ++res;
+class Solution {
+    public List<String> simplifiedFractions(int n) {
+        List<String> ans = new ArrayList<String>();
+        for (int denominator = 2; denominator <= n; ++denominator) {
+            for (int numerator = 1; numerator < denominator; ++numerator) {
+                if (gcd(numerator, denominator) == 1) {
+                    ans.add(numerator + "/" + denominator);
                 }
             }
         }
-        return res;
+        return ans;
+    }
+
+    public int gcd(int a, int b) {
+        return b != 0 ? gcd(b, a % b) : a;
     }
 }
