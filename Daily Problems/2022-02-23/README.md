@@ -1,73 +1,80 @@
 # leetcode
 Leet Code problem Algorithm practices record
 
-171. Excel Sheet Column Number
-Given a string columnTitle that represents the column title as appear in an Excel sheet, return its corresponding column number.
+133. Clone Graph
+Medium
+Given a reference of a node in a connected undirected graph.
 
-For example:
+Return a deep copy (clone) of the graph.
 
-A -> 1
-B -> 2
-C -> 3
-...
-Z -> 26
-AA -> 27
-AB -> 28 
-...
+Each node in the graph contains a value (int) and a list (List[Node]) of its neighbors.
+
+class Node {
+    public int val;
+    public List<Node> neighbors;
+}
+ 
+Test case format:
+
+For simplicity, each node's value is the same as the node's index (1-indexed). For example, the first node with val == 1, the second node with val == 2, and so on. The graph is represented in the test case using an adjacency list.
+
+An adjacency list is a collection of unordered lists used to represent a finite graph. Each list describes the set of neighbors of a node in the graph.
+
+The given node will always be the first node with val = 1. You must return the copy of the given node as a reference to the cloned graph.
 
 Example 1:
-
-Input: columnTitle = "A"
-Output: 1
+Input: adjList = [[2,4],[1,3],[2,4],[1,3]]
+Output: [[2,4],[1,3],[2,4],[1,3]]
+Explanation: There are 4 nodes in the graph.
+1st node (val = 1)'s neighbors are 2nd node (val = 2) and 4th node (val = 4).
+2nd node (val = 2)'s neighbors are 1st node (val = 1) and 3rd node (val = 3).
+3rd node (val = 3)'s neighbors are 2nd node (val = 2) and 4th node (val = 4).
+4th node (val = 4)'s neighbors are 1st node (val = 1) and 3rd node (val = 3).
 Example 2:
 
-Input: columnTitle = "AB"
-Output: 28
+
+Input: adjList = [[]]
+Output: [[]]
+Explanation: Note that the input contains one empty list. The graph consists of only one node with val = 1 and it does not have any neighbors.
 Example 3:
 
-Input: columnTitle = "ZY"
-Output: 701
+Input: adjList = []
+Output: []
+Explanation: This an empty graph, it does not have any nodes.
+ 
 
 Constraints:
 
-1 <= columnTitle.length <= 7
-columnTitle consists only of uppercase English letters.
-columnTitle is in the range ["A", "FXSHRXW"].
+The number of nodes in the graph is in the range [0, 100].
+1 <= Node.val <= 100
+Node.val is unique for each node.
+There are no repeated edges and no self-loops in the graph.
+The Graph is connected and all nodes can be visited starting from the given node.
 
 # leetcode-CN
-1994. 好子集的数目
-给你一个整数数组 nums 。如果 nums 的一个子集中，所有元素的乘积可以表示为一个或多个 互不相同的质数 的乘积，那么我们称它为 好子集 。
+917. 仅仅反转字母
+给你一个字符串 s ，根据下述规则反转字符串：
 
-比方说，如果 nums = [1, 2, 3, 4] ：
-[2, 3] ，[1, 2, 3] 和 [1, 3] 是 好 子集，乘积分别为 6 = 2*3 ，6 = 2*3 和 3 = 3 。
-[1, 4] 和 [4] 不是 好 子集，因为乘积分别为 4 = 2*2 和 4 = 2*2 。
-请你返回 nums 中不同的 好 子集的数目对 109 + 7 取余 的结果。
-
-nums 中的 子集 是通过删除 nums 中一些（可能一个都不删除，也可能全部都删除）元素后剩余元素组成的数组。如果两个子集删除的下标不同，那么它们被视为不同的子集。
+所有非英文字母保留在原有位置。
+所有英文字母（小写或大写）位置反转。
+返回反转后的 s 。
 
 示例 1：
 
-输入：nums = [1,2,3,4]
-输出：6
-解释：好子集为：
-- [1,2]：乘积为 2 ，可以表示为质数 2 的乘积。
-- [1,2,3]：乘积为 6 ，可以表示为互不相同的质数 2 和 3 的乘积。
-- [1,3]：乘积为 3 ，可以表示为质数 3 的乘积。
-- [2]：乘积为 2 ，可以表示为质数 2 的乘积。
-- [2,3]：乘积为 6 ，可以表示为互不相同的质数 2 和 3 的乘积。
-- [3]：乘积为 3 ，可以表示为质数 3 的乘积。
+输入：s = "ab-cd"
+输出："dc-ba"
 示例 2：
 
-输入：nums = [4,2,3,15]
-输出：5
-解释：好子集为：
-- [2]：乘积为 2 ，可以表示为质数 2 的乘积。
-- [2,3]：乘积为 6 ，可以表示为互不相同质数 2 和 3 的乘积。
-- [2,15]：乘积为 30 ，可以表示为互不相同质数 2，3 和 5 的乘积。
-- [3]：乘积为 3 ，可以表示为质数 3 的乘积。
-- [15]：乘积为 15 ，可以表示为互不相同质数 3 和 5 的乘积。
+输入：s = "a-bC-dEf-ghIj"
+输出："j-Ih-gfE-dCba"
+示例 3：
 
-提示：
+输入：s = "Test1ng-Leet=code-Q!"
+输出："Qedo1ct-eeLg=ntse-T!"
+ 
 
-1 <= nums.length <= 105
-1 <= nums[i] <= 30
+提示
+
+1 <= s.length <= 100
+s 仅由 ASCII 值在范围 [33, 122] 的字符组成
+s 不含 '\"' 或 '\\'
